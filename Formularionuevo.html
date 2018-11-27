@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+ <html>
+
+   <head>
+      <meta charset="utf-8"/>
+      <title>Título de la web</title>
+	  
+	  <style>
+	      table{
+		    text-align:center;
+			background-color:pink;
+			width:25%;
+			margin:auto;
+			border:2px black dashed;
+		  }
+	      
+		  td{
+		    padding:15px;
+			
+		  
+		  }
+	  </style>
+	  
+	  <script>
+          var edad;
+
+	     function comenzar(){
+	         edad = document.getElementById("miedad");
+	         edad.addEventListener("change",cambia_ranbgo,false);
+	         document.Datos_Usuario.addEventListener("invalid", validar, true);
+	         document.getElementById("enviar").addEventListener("click", enviar, false);
+	         document.Datos_Usuario.addEventListener("ïnput", validar_tiempo, false);
+
+	     }
+
+	     function cambia_rango() {
+	         var salida = document.getElementById("rango");
+	         var calculo = edad.value - 30;
+
+	         if (calculo < 30) {
+	             calculo = 0;
+	             eda.value=30;
+	         }
+
+	         salida.innerHTML = calculo + " a " + edad.value;
+             
+	     }
+	     
+	     function validar(e) {
+	         var elemento = e.target;
+	         elemento.style.background = red;
+
+
+	     }
+
+	     function enviar() {
+             var cuadro_usuario = document.getElementById("usuario");
+	         var correcto = document.Datos_Usuario.checkValidity();
+
+	         if (correcto == true) {
+	             document.Datos_Usuario.submit();
+	         }
+
+	         else if (cuadro_usuario.validity.valueMissing == true) {
+
+	             alert("Asi no wey");
+	         }
+
+	     }
+
+	     function validar_tiempo(e) {
+	         var elemento = e.target;
+
+	         if (elemento.validity.valid == true) {
+	             elemento.style.background = "white";
+
+	         }
+	         else {
+	             elemento.style.background = "black"; 
+	         }
+	     }
+	     window.addEventListener("load",comenzar.false);
+		 
+	  </script>
+   </head>
+
+   <body>
+      <!-- Contenido de la web --> 
+	  <section>
+	     
+		 <form name="Datos_Usuario" method="get">
+		     
+			<!-- <datalist id="informacion">
+			 
+			     <option value="1234567" label=" contacto 1">
+			     <option value="1231478" label=" contacto 2">
+				 <option value="7894561" label=" contacto 3">
+				 
+			 </datalist>
+			 
+		     Tel :&nbsp;<input type="tel" name="telefono" id="telefono" list="informacion">  -->
+			 
+			 
+           <table>
+               <tr>
+                   <td>
+                       Usuario:
+                   </td>
+                   <td><input pattern="[A-Za-Z] (3)" type="text" name="usuario" id="usuario" maxlength="10" required></td>
+               </tr>
+               <tr>
+                   <td>
+                       Email:
+                   </td>
+                   <td><input type="text" name="miemail" id="miemail" required></td>
+               </tr>
+               <tr>
+                   <td>
+                       Edad:
+                   </td>
+                   <td><input type="range" name="miedad" id="miedad" min="0" max="120" value="30" step="30"></td>
+               </tr>
+               <tr>
+                   <td>
+                       <output id="rango">0 a 30</output>
+                   </td>
+               </tr>
+               <tr>
+                   <td>
+                       <input type="submit" name="enviar" id="enviar" value="Registrar">
+                   </td>
+               </tr>
+           </table>
+		 
+		 
+		 </form>
+	  
+	  
+	  </section>
+   </body>
+
+ </html> 
